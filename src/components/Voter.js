@@ -1,7 +1,6 @@
-// Voter.jsx
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { WalletContext } from '../WalletProvider';  // Update the path based on your folder structure
+import { WalletContext } from '../WalletProvider';  
 
 const candidates = [
   { id: 1, name: 'Candidat 1', image: '/homme.webp' },
@@ -42,11 +41,11 @@ const Voter = () => {
           <p>{candidate.name}</p>
           {/* Render the button only if the user is connected */}
           {walletConnected ? (
-            <Link to={`/components/candidats/Candidat${candidate.id}`} style={{ textDecoration: 'none' }}>
-              <button>Voter maintenant</button>
+            <Link to={`/components/candidats/Candidat${candidate.id}`} style={buttonLinkStyle}>
+              <button style={buttonStyle}>Voter maintenant</button>
             </Link>
           ) : (
-            <p>Connectez-vous pour voter.</p>
+            <p style={{ color: 'red' }}>Connectez-vous pour voter.</p>
             // You can replace this with any alternative content or message
           )}
         </div>
@@ -55,5 +54,17 @@ const Voter = () => {
   );
 };
 
-export default Voter;
+const buttonStyle = {
+  backgroundColor: '#95a5a6',
+  color: 'white',
+  border: 'none',
+  padding: '10px 20px',
+  borderRadius: '40px',
+  cursor: 'pointer',
+};
 
+const buttonLinkStyle = {
+  textDecoration: 'none',
+};
+
+export default Voter;
