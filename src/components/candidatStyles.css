@@ -1,0 +1,25 @@
+/* candidatStyles.css */
+.candidat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  .candidat-image {
+    width: 300px;
+    height: auto;
+    border-radius: 50%;
+  }
+  
+  .candidat-title {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+  
+  .candidat-text {
+    text-align: center;
+    margin: 20px;
+  }
+  
