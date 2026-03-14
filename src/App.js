@@ -1,33 +1,28 @@
-import React from 'react';
-import { NextUIProvider } from '@nextui-org/react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
-import Header from './Header';
-import Footer from './Footer';
-import { WalletProvider } from './WalletProvider';
-import KryptoPote from './Kryptopote';
-import Candidats from './components/Candidats';
-import Voter from './components/Voter';
-import Candidat1 from './components/candidats/Candidat1';
-import Candidat2 from './components/candidats/Candidat2';
+import { Routes, Route } from "react-router-dom";
+import { Web3Provider } from "./context/Web3Context";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Elections from "./pages/Elections";
+import ElectionDetail from "./pages/ElectionDetail";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
-    <NextUIProvider>
-      <WalletProvider>
-        <>
-          <Header />
+    <Web3Provider>
+      <div className="flex flex-col min-h-screen bg-base-100">
+        <Header />
+        <main className="flex-1">
           <Routes>
-            <Route path="/" element={<KryptoPote />} />
-            <Route path="/components/Candidats" element={<Candidats />} />
-            <Route path="/components/Voter" element={<Voter />} />
-            <Route path="/components/candidats/Candidat1" element={<Candidat1 />} />
-            <Route path="/components/candidats/Candidat2" element={<Candidat2 />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/elections" element={<Elections />} />
+            <Route path="/elections/:id" element={<ElectionDetail />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
-          <Footer />
-        </>
-      </WalletProvider>
-    </NextUIProvider>
+        </main>
+        <Footer />
+      </div>
+    </Web3Provider>
   );
 }
 
